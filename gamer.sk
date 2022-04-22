@@ -1,0 +1,80 @@
+# what time is it bro
+command /test:
+	permission: gamer.test
+	permission message: &cNo permission.
+	trigger:
+		send "&3poopy, stinky" to player
+		
+# rise and shine maggots
+command /day:
+	permission: gamer.day
+	permission message: &cNo permission.
+	trigger:
+		execute command "time set day"
+		send "&6Rise and shine!" to player
+# sleepy time
+command /night:
+	permission: gamer.night
+	permission message: &cNo permission.
+	trigger:
+		execute command "time set midnight"
+		send "&9Time for bed." to player
+		
+# i watch you in your sleep
+on player entering a bed:
+	send "&8i watch you in your sleep..." to player
+	
+# zip bomb
+command /reallycoolcommand:
+	permission: gamer.zipbomb
+	permission message: &cNo permission.
+	trigger:
+		send "<link:https://bit.ly/3I2Lkth>&9&nMinecraft for FREE! (not a zip bomb)" to player
+		
+# command hub
+command /commands:
+	permission: gamer.commands
+	permission message: &cNo permission.
+	trigger:
+		send "<cmd:/heal><tooltip:&4&oHeals you.>&3&nHeal" to player
+		send "<cmd:/feed><tooltip:&4&oFeeds you.>&3&nFeed" to player
+		send "<cmd:/more><tooltip:&4&oTurns the item you are holding into a stack of 64.>&3&nItem Stacker" to player
+		send "<cmd:/dtest><tooltip:&4&oTests death (death isn't very happy with how you are trolling him)>&3&nTest Death" to player
+		send "<cmd:/kill><tooltip:&4&okill yourself.>&3&nKill Yourself Now!" to player
+		send "<cmd:/kill Aurazone><tooltip:&4&oKill Aura (i coded a hack client in skript real)>&3&nKill Aura" to player
+		
+# reload gamer.jk lmao its just a prank
+command /gamer [<text>]:
+	permission: gamer.gamer
+	permission message: &cNo permission.
+	trigger:
+		if arg 1 is not set:
+			send "&cUsage: /gamer <reload|version>" to player
+		if arg 1 is "reload":
+			send "&6Reloading &fgamer.sk" to player
+			wait 1 tick
+			execute console command "sk reload gamer.sk"
+		if arg 1 is "version":
+			send "&6Version of &fgamer.sk &6is &f0.0.2" to player
+			
+# up like the skeppy comand that he does where he does up and it place glas
+command /up [<integer>]:
+	permission: gamer.up
+	permission message: &cNo permission.
+	trigger:
+		execute console command "execute at %player% run setblock ~ ~%arg-1% ~ minecraft:glass"
+		set {poopy} to arg 1 + 1
+		wait 1 tick
+		execute console command "execute at %player% run teleport %player% ~ ~%{poopy}% ~"
+		send "&6Uppity Buppity!" to player
+		
+# lmao
+command /knockknock:
+	permission: gamer.knockknock
+	permission message: &cNo permission.
+	trigger:
+		send "&9Knock knock!"
+		wait 40 ticks
+		send "&7You: &a&oWho's there!"
+		wait 40 ticks
+		send "<tooltip:&4&o&lkill yourself>&0&khmm..."
